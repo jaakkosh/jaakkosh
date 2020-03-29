@@ -1,21 +1,31 @@
 'use strict';
 const catModel = require('../models/catModel');
 
-const cats = catModel.cats;
-
-const cat_list_get = (req, res) => {
+/*const cats = catModel.cats; //alkuperainen*/
+const cats = catModel.getAllCats();
+/*const cat_list_get = (req, res) => {
+  res.json(cats);
+};*/
+const cat_list_get = async (req, res) => {
+  const cats = await catModel.getAllCats();
   res.json(cats);
 };
-
 const cat_get = (req, res) => {
+/*
   console.log('cat id parameter', req.params);
   const cat = cats.filter(cat => cat.id === req.params.id).pop();
+  const cats = catModel.getCat();
   if(cat) {
     res.json(cat);
-  }
-  else{
+     else{
     res.json("You reqested a cat whose id is "+ req.params.id)
   }
+*/
+  const cats = catModel.getCat;
+  console.log('moi',cats);
+  res.json(cats);
+
+
 
 };
 
@@ -29,3 +39,21 @@ module.exports = {
   cat_get,
   cat_post,
 };
+
+
+/*
+const pool = require('../database/db');
+const promisePool = pool.promise();
+
+const getAllCats = async () => {
+  try {
+    const [rows] = await promisePool.query('SELECT * FROM wop_cat');
+    return rows;
+  } catch (e) {
+    console.log('error', e.message);
+  }
+};
+
+module.exports = {
+  getAllCats,
+};*/

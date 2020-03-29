@@ -1,9 +1,10 @@
 'use strict';
+require('dotenv').config();
 const cors=require('cors');
 const express = require('express');
 const app = express();
 const port = 3000;
-const catRoute = require('./routes/catRoute');
+const catRoute = require('./routes/catRoute'); //tämä saa siis catrouten
 const userRoute = require('./routes/userRoute');
 app.use(cors());
 

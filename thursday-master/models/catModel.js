@@ -1,4 +1,7 @@
+
 'use strict';
+
+/*
 const cats = [
   {
     id: '1',
@@ -20,4 +23,36 @@ const cats = [
 
 module.exports = {
   cats,
+};
+
+*/
+
+
+// ./models/catModel.js
+
+
+const pool = require('../database/db.js');//.js lisäys
+const promisePool = pool.promise();
+
+const getAllCats = async () => {
+  try {
+
+    const [rows] = await promisePool.query('SELECT * FROM wop_cat');
+    console.log('this',rows);
+    return rows;
+
+  } catch (e) {
+    console.log('error', e.message);
+  }
+};
+const getCat = () => {
+  try {
+    const rows = promisePool.query('SELECT * FROM wop_cat WHERE cat_id = 1');
+    return rows;
+  } catch (e) {
+    console.log('error', e.message);
+  }
+};
+module.exports = {
+  getAllCats,
 };
