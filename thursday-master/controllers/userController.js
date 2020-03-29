@@ -14,7 +14,7 @@ const user_get = (req, res) => {
 };
 
 const user_post = (req, res) => {
-  console.log('data from form', req.body);
+  console.log('data from form', req.body);//näyttää postin lähettämän datan eli bodyn
   res.send('With this endpoint you can add users');
 };
 

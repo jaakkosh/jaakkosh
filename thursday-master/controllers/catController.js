@@ -10,7 +10,13 @@ const cat_list_get = (req, res) => {
 const cat_get = (req, res) => {
   console.log('cat id parameter', req.params);
   const cat = cats.filter(cat => cat.id === req.params.id).pop();
-  res.json(cat);
+  if(cat) {
+    res.json(cat);
+  }
+  else{
+    res.json("You reqested a cat whose id is "+ req.params.id)
+  }
+
 };
 
 const cat_post = (req, res) => {

@@ -1,11 +1,11 @@
 'use strict';
 // userRoute
 
-const express = require('express');
-const router = express.Router();
+const express = require('express');//lisätään express niminen moduuli
+const router = express.Router();//
 const userController = require('../controllers/userController');
 
-router.get('/', userController.user_list_get);
+router.get('/', userController.user_list_get);//userControllerista saadaan /middlevare funktio jota kutsutaan get metodilla
 
 router.get('/:id', userController.user_get);
 
